@@ -1,0 +1,20 @@
+1. Find and open the TFA .lua file corresponding to the weapon
+2. Search for the term "SWEP.Attachments"
+	If it does exist:
+		Add this line to the end of the table, replacing X with the next number available
+			[X]={header="Grapple",atts={"raid_grapple"},},
+		It should look something like this now
+			SWEP.Attachments = {
+				[1]={header="Modes",atts={"dc17m_sniper","dc17m_emp","dc17m_shotgun","dc17m_rocket","dc17m_grapple","dc17m_bacta"},},
+				[2]={header="Mags",atts = {"dc17m_magext","dc17m_magdrum","dc17m_snipermagext"},},
+				[3]={header="Holosights",atts = {"dc17m_holosights"},},
+				[4]={header="Laser",atts = {"dc17m_laser"},},
+				[5]={header="Grapple",atts={"raid_grapple"},},
+			}
+	If it does not exist:
+		Add this line to the file
+		SWEP.Attachments = {[1]={header="Grapple",atts={"raid_grapple"},},}
+3. Save the file
+
+On server restart, the gun should have a new C Menu attachment for the Raid Hook Grapple
+If Raid Hook is not installed on the server, the attachment will not work
