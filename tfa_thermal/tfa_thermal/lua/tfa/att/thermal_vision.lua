@@ -28,7 +28,7 @@ if CLIENT then
 
 		hook.Add("PostDrawOpaqueRenderables", "Deno_TFA_Thermal_Highlight", function()
 			if not LocalPlayer():Alive() then 
-				LocalPlayer():DeactivateThermal() 
+				LocalPlayer():DeactivateThermal(true) 
 				return
 			end
 			
@@ -91,8 +91,8 @@ if CLIENT then
 			local start = SysTime()
 
 			hook.Add("PostDrawOpaqueRenderables", "Deno_TFA_Thermal_Highlight", function()
-				tab["$pp_colour_brightness"] = Lerp((SysTime()-start) / 0.25, -0.2, 1)
-				tab["$pp_colour_contrast"] = Lerp((SysTime()-start) / 0.25, 0.1, 0.5)
+				tab["$pp_colour_brightness"] = Lerp((SysTime()-start) / 0.25, -0.2, 0)
+				tab["$pp_colour_contrast"] = Lerp((SysTime()-start) / 0.25, 0.1, 1)
 				tab["$pp_colour_addr"] = Lerp((SysTime()-start) / 0.25, 0.7, 0)
 				tab["$pp_colour_addg"] = Lerp((SysTime()-start) / 0.25, 0.3, 0)
 				tab["$pp_colour_addb"] = Lerp((SysTime()-start) / 0.25, 1.5, 0)
@@ -132,7 +132,7 @@ if CLIENT then
 
 	net.Receive("Deno_TFA_Thermal_Deactivate", function()
 		timer.Remove("Deno_TFA_Thermal_Scoped")
-		LocalPlayer():DeactivateThermal(false)
+		LocalPlayer():DeactivateThermal(true)
 	end)
 end
 
